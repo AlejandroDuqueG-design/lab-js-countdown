@@ -27,17 +27,27 @@ function startCountdown() {
 
   // Your code goes here ...
   timer = setInterval(()=>{
-    const timeDisplay = document.querySelector("div#time");
-    if (timeDisplay) {
-      timeDisplay.innerText = remainingTime;
+  remainingTime-=1
+  timeElement.innerText = remainingTime;
+if (remainingTime === 10) {
+      showToast("Final countdown!");
     }
 
-    if (remainingTime <= 0) {
+    if (remainingTime === 5) {
+      showToast("Start the engines!");
+    }
+
+
+    if (remainingTime === 0) {
       clearInterval(timer);
-      showToast();
+      showToast("Lift off! ");
+      startButton.disabled = false;
+      remainingTime = DURATION; 
     }
   }, 1000);
 }
+  
+  
 
 
 // ITERATION 3: Show Toast
